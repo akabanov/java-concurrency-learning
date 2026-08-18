@@ -1,7 +1,10 @@
-package nz.kabanov.learning.concurrency.idioms;
-
 import java.util.concurrent.*;
 
+/**
+ * Run a task with a time budget, the safe way: hand it to an executor and use
+ * Future.get(timeout). On timeout we cancel the task instead of interrupting a thread
+ * we do not own. Cancellation policy stays inside the task itself.
+ */
 @SuppressWarnings("unused")
 public class TimedRun {
 

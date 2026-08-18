@@ -1,5 +1,8 @@
-package nz.kabanov.learning.concurrency.idioms;
-
+/**
+ * What can go wrong without synchronisation: no visibility guarantees between threads,
+ * plus reordering. Both problems are shown below in one tiny main().
+ * Fix: make both fields volatile or read/write them under the same lock.
+ */
 public class AntiPublishing {
 
     private static int answer;

@@ -1,7 +1,10 @@
-package nz.kabanov.learning.concurrency.idioms.latch;
-
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * Two CountDownLatch used as gates. The start gate holds every worker until all of them
+ * are created, so the measurement is not skewed by thread startup. The end gate lets
+ * the main thread wait until the last worker is done.
+ */
 @SuppressWarnings("unused")
 public class TestHarness {
 

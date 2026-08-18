@@ -1,7 +1,11 @@
-package nz.kabanov.learning.concurrency.idioms.escape;
-
 import javax.swing.*;
 
+/**
+ * The fix for ImplicitEscape: private constructor plus a static factory.
+ * The object is fully constructed first, and only then the listener is registered,
+ * so 'this' never escapes early.
+ */
+@SuppressWarnings("unused")
 public class PatternAntiEscape {
 
     private PatternAntiEscape() {

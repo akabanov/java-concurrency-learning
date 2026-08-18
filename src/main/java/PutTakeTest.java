@@ -1,8 +1,15 @@
-package nz.kabanov.learning.concurrency.idioms;
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * How to test a concurrent class without writing a flaky test.
+ * N producers and N consumers hammer a blocking queue at the same time. Each side sums
+ * what it put or took, and at the end both sums must match. Checksums like this survive
+ * any interleaving, which a naive assert would not.
+ * CyclicBarrier makes all threads start together (more contention) and lets the timer
+ * measure only the interesting part.
+ * Also a quick benchmark: swap the queue implementation below and compare the numbers.
+ */
 public class PutTakeTest {
 
     private static final ExecutorService executor = Executors.newCachedThreadPool();
